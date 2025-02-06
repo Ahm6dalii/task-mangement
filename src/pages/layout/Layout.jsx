@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Home from '../home/home'
+import Home from '../home/Home'
 import { changeMode } from '../../redux/reducers/modeSlice'
 import Toast from '../../components/toast/toast'
 
