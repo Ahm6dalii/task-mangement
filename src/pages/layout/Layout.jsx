@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeMode } from '../../redux/reducers/modeSlice'
 import Toast from '../../components/toast/toast'
-import Home from './../home/Home';
+import Home from '../home/Home';
 
 const Layout = () => {
     const {mode}=useSelector(store=>store.mode)
