@@ -9,7 +9,7 @@ import { FaCheck } from "react-icons/fa6";
 import { LuWaypoints } from "react-icons/lu";
 
 const Navebar = () => {
-     const [isOpen, setIsOpen] = useState(true);
+     const [isOpen, setIsOpen] = useState(false );
      const dispatch=useDispatch()
     const {mode}=useSelector(store=>store.mode)
     

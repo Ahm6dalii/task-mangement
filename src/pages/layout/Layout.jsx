@@ -13,7 +13,7 @@ const Layout = () => {
         
     }
   return (
-    <main  className={`${mode=="dark"?"dark":''} bg-green-500 dark:bg-zinc-800`}>
+    <main  className={`${mode=="dark"?"dark":''} overflow-hidden max-w-full bg-green-500 dark:bg-zinc-800`}>
         <Home/>
         <Toast/>
     </main>
