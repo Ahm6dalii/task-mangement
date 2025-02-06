@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useDispatch } from 'react-redux'
 import { searchTask } from '../../redux/reducers/taskSlice'
 
-export const SearchInput = () => {
+export const SearchInput =memo( () => {
     const dispatch=useDispatch()
     const taskSearch=(e)=>{
         dispatch(searchTask(e.target.value))
@@ -22,4 +22,4 @@ export const SearchInput = () => {
     </svg>
   </label>
   )
-}
+})

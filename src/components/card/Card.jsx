@@ -21,7 +21,7 @@ const Card = ({item}) => {
     }  
 
   return (
-    <div className='p-4 rounded-xl bg-gray-300 dark:text-gray-800 dark:bg-gray-400'>
+    <div className='p-4 rounded-xl text-gray-800 bg-gray-300 dark:text-gray-800 dark:bg-gray-400'>
       <div className='flex items-center justify-between'>
       <h3 className='text-sm border-b mb-3 font-semibold capitalize'>{item?.title.split(' ').slice(0,3).join(' ')}</h3>
       < MdOpenInNew className='cursor-pointer' />

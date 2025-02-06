@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { RiMenuFoldLine, RiMenuUnfoldLine } from "react-icons/ri";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineUser, AiOutlineQuestionCircle } from "react-icons/ai";
 import { NavLink } from "react-router"
@@ -13,7 +13,14 @@ const Navebar = () => {
      const dispatch=useDispatch()
     const {mode}=useSelector(store=>store.mode)
     
-    
+    useEffect(() => {
+      const handleResize = () => {
+        setIsOpen(window.innerWidth > 768);
+      };
+  
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
       const menuItems = [
         { icon: <LuWaypoints size={20} />, label: 'All', href: '/all' },
         { icon: <FaCheck size={20} />, label: 'Completed', href: '/completed' },
@@ -21,13 +28,13 @@ const Navebar = () => {
       ];
   return (
     <div
-    className={`dark:bg-zinc-600 relative min-h-screen bg-white shadow-lg transition-all duration-300 ease-in-out
+    className={`dark:bg-zinc-600 relative min-h-screen bg-white shadow-lg 
       ${isOpen ? 'w-64' : 'w-20'}`}
   >
     {/* Toggle Button */}
     <button
       onClick={() => setIsOpen(!isOpen)}
-      className="absolute -right-3 top-6 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-100"
+      className="absolute -right-3 cursor-pointer top-6 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-100"
     >
       {isOpen ? (
         <RiMenuFoldLine className="h-4 w-4 text-gray-600" />

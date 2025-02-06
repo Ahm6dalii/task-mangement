@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Bounce, ToastContainer } from 'react-toastify'
 
 const Toast = () => {
@@ -19,4 +19,4 @@ transition={Bounce}
   )
 }
 
-export default Toast
+export default memo(Toast)

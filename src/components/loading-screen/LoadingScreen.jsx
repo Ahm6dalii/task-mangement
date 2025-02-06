@@ -1,6 +1,5 @@
 import React from 'react'
 import { Triangle } from 'react-loader-spinner'
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export const LoadingScreen = () => {
   return (
@@ -14,7 +13,6 @@ export const LoadingScreen = () => {
         wrapperStyle={{}}
         wrapperClass=""
         />
-    {/* <AiOutlineLoading3Quarters className='animate-spin' /> */}
 
     </div>
   )
