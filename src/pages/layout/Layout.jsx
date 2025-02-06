@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeMode } from '../../redux/reducers/modeSlice'
-import Toast from '../../components/toast/toast'
+import Toast from '../../components/toast/Toast'
 import Home from '../home/Home';
 
 const Layout = () => {
