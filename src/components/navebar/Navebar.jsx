@@ -4,6 +4,10 @@ import { AiOutlineHome, AiOutlineSetting, AiOutlineUser, AiOutlineQuestionCircle
 import { NavLink } from "react-router"
 import { useDispatch, useSelector } from 'react-redux';
 import { changeMode } from '../../redux/reducers/modeSlice';
+import { TiSpiral } from "react-icons/ti";
+import { FaCheck } from "react-icons/fa6";
+import { LuWaypoints } from "react-icons/lu";
+
 const Navebar = () => {
      const [isOpen, setIsOpen] = useState(true);
      const dispatch=useDispatch()
@@ -11,9 +15,9 @@ const Navebar = () => {
     
     
       const menuItems = [
-        { icon: <AiOutlineHome size={20} />, label: 'All', href: '/all' },
-        { icon: <AiOutlineUser size={20} />, label: 'Completed', href: '/completed' },
-        { icon: <AiOutlineSetting size={20} />, label: 'Pending', href: '/pending' },
+        { icon: <LuWaypoints size={20} />, label: 'All', href: '/all' },
+        { icon: <FaCheck size={20} />, label: 'Completed', href: '/completed' },
+        { icon: <TiSpiral size={20} />, label: 'Pending', href: '/pending' },
       ];
   return (
     <div
