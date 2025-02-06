@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { MdDelete } from "react-icons/md";
 import { MdOpenInNew } from "react-icons/md";
 import { useDispatch } from 'react-redux';
-import { deleteTask } from '../../redux/reducers/taskSlice';
+import { deleteTask, updateTask } from '../../redux/reducers/taskSlice';
 import UpdateModal from '../modal/UpdateModal';
 const Card = ({item}) => {
 
@@ -12,6 +12,12 @@ const Card = ({item}) => {
     // console.log(id);
         dispatch(deleteTask(id))
     }
+
+    const updateComplete=(value)=>{
+      dispatch(updateTask({id:item.id,updatedTask:{...item,completed:value}}))
+
+    }  
+
   return (
     <div className='p-4 rounded-xl bg-gray-300 dark:text-gray-800 dark:bg-gray-400'>
       <div className='flex items-center justify-between'>
@@ -23,7 +29,7 @@ const Card = ({item}) => {
    
       <div className='flex justify-between items-center mt-4'>
             <div>
-                  <button className={`btn ${item?.completed?'bg-green-700':'bg-red-800'} border-none shadow-none rounded-4xl text-gray-100 px-5`}>{item?.completed?'Completed':'InCompleted'}</button>
+                  <button onClick={()=>updateComplete(!item?.completed)} className={`btn ${item?.completed?'bg-green-700':'bg-red-800'} border-none shadow-none rounded-4xl text-gray-100 px-5`}>{item?.completed?'Completed':'InCompleted'}</button>
             </div>
             <div className='flex gap-2 ms-3'>
             <UpdateModal task={item}/>

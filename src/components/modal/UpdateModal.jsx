@@ -15,15 +15,14 @@ const UpdateModal = ({task}) => {
   })
   const handleRegister=()=>{
     // console.log(values);
-    dispatch(updateTask({id:task.id,updatedTask:task}))
+    dispatch(updateTask({id:task.id,updatedTask:values}))
     document.getElementById('my_modal_3').close()
   }
   const { handleBlur, handleChange, handleSubmit, values, errors ,touched} = useFormik({
     initialValues: {
-      userId: Math.random() * 10,
-      id: useId(),
       title: task.title,
-      completed: task.completed
+      completed: task.completed,
+      time:new Date()
     }
     , validationSchema,
     onSubmit: handleRegister,
@@ -46,7 +45,7 @@ const UpdateModal = ({task}) => {
             
               <div className='flex gap-2 mb-4'> 
                 <label className='text-sm' htmlFor=" check">Tast Status</label>
-              <input onChange={handleChange}  checked={values.completed} onBlur={handleBlur} name="completed"  type="checkbox" id='check'  className="checkbox text-sm "  />
+              <input onChange={handleChange}  value={task.title} checked={values.completed} onBlur={handleBlur} name="completed"  type="checkbox" id='check'  className="checkbox text-sm "  />
               </div>
 
               <button type="submit"  className={`btn btn-success`}>{isLoading? <FaSpinner className='animate-spin' />:'Submit'}</button>

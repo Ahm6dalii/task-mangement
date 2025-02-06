@@ -24,7 +24,8 @@ const AddModal = () => {
       userId: Math.random() * 10,
       id: useId(),
       title: '',
-      completed: false
+      completed: false,
+      time:new Date()
     }
     , validationSchema,
     onSubmit: handleRegister,
