@@ -128,7 +128,7 @@ const taskSlice = createSlice({
          .addCase(updateTask.fulfilled, (state, action) => {
           console.log(action.payload);
           
-          state.task = state.orignalTask.map((task) =>
+          state.task = state.task.map((task) =>
             task.id === action.payload.id ? action.payload : task
           );
           toastSuccess('Task Updated')

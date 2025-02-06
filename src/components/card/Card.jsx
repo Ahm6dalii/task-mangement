@@ -14,7 +14,9 @@ const Card = ({item}) => {
     }
 
     const updateComplete=(value)=>{
-      dispatch(updateTask({id:item.id,updatedTask:{...item,completed:value}}))
+      console.log(item.id);
+      
+      dispatch(updateTask({id:item.id,updatedTask:{...item,completed:!value}}))
 
     }  
 
@@ -29,7 +31,7 @@ const Card = ({item}) => {
    
       <div className='flex justify-between items-center mt-4'>
             <div>
-                  <button onClick={()=>updateComplete(!item?.completed)} className={`btn ${item?.completed?'bg-green-700':'bg-red-800'} border-none shadow-none rounded-4xl text-gray-100 px-5`}>{item?.completed?'Completed':'InCompleted'}</button>
+                  <button onClick={()=>updateComplete(item?.completed)} className={`btn ${item?.completed?'bg-green-700':'bg-red-800'} border-none shadow-none rounded-4xl text-gray-100 px-5`}>{item?.completed?'Completed':'InCompleted'}</button>
             </div>
             <div className='flex gap-2 ms-3'>
             <UpdateModal task={item}/>

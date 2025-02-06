@@ -1,14 +1,15 @@
 import { useFormik } from 'formik';
-import React, { memo, useId, useState } from 'react'
+import React, { memo, useEffect, useId, useRef, useState } from 'react'
 import { MdAddCircleOutline } from "react-icons/md";
 import * as Yup from 'yup'
 // import { FaSpinner } from "react-icons/fa";
 import { FaSpinner } from "react-icons/fa6";
 import { addTask } from '../../redux/reducers/taskSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 
 const AddModal = () => {
-  const {isLoading}=useSelector(store=>store.taskReducer)
+const [isLoading,setLoading]=useState(false)
+const intClear=useRef()
   const dispatch=useDispatch()
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is Required").min(6, "min characters is 6").max(25, "min characters is 25"),
@@ -17,8 +18,17 @@ const AddModal = () => {
   const handleRegister=()=>{
     console.log(values);
     dispatch(addTask(values))
-    document.getElementById('my_modal_2').close()
+    setLoading(true)
+    intClear.current=setTimeout(()=>{
+      setLoading(false)
+    },1)
+    document.getElementById('new-task').close()
   }
+  useEffect(()=>{
+      return()=>{
+        clearTimeout(intClear.current)
+      }
+  },[])
   const { handleBlur, handleChange, handleSubmit, values, errors ,touched} = useFormik({
     initialValues: {
       userId: Math.random() * 10,
@@ -33,9 +43,9 @@ const AddModal = () => {
   })
   return (
     <>
-      <button onClick={() => document.getElementById('my_modal_2').showModal()}><MdAddCircleOutline />
+      <button onClick={() => document.getElementById('new-task').showModal()}><MdAddCircleOutline />
       </button>
-      <dialog id="my_modal_2" className="modal">
+      <dialog id="new-task" className="modal">
         <div className="modal-box">
           <form onSubmit={handleSubmit}  className="">
                 <h3 className='text-center mb-4 border-b pb-5 w-fit mx-auto'>Create New Task </h3>
@@ -50,7 +60,7 @@ const AddModal = () => {
               <input onChange={handleChange} onBlur={handleBlur} name="completed"  type="checkbox" id='check'  className="checkbox text-sm "  />
               </div>
 
-              <button type="submit"  className={`btn btn-success`}>{isLoading? <FaSpinner className='animate-spin' />:'Submit'}</button>
+              <button type="submit"  className={`btn btn-success`}>{isLoading? <FaSpinner className='animate-spin' />:'Create'}</button>
 
           </form>
         </div>
